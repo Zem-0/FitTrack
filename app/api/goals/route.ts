@@ -51,7 +51,10 @@ export async function POST(request: Request) {
     const newGoals = await prisma.goals.create({
       data: {
         userId,
-        ...goals
+        calories: goals.calories,
+        protein: goals.protein,
+        carbs: goals.carbs,
+        fat: goals.fats
       }
     });
 
