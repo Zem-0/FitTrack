@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useUserGoals } from "@/hooks/useUserGoals";
 
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Activity,
   Check,
@@ -86,37 +85,6 @@ interface Todo {
   completed: boolean;
   isNutritionTask?: boolean;
 }
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
-};
-
-const cardVariants = {
-  hover: {
-    scale: 1.02,
-    transition: {
-      duration: 0.2,
-      ease: "easeInOut"
-    }
-  }
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.5
-    }
-  }
-};
 
 const cardStyle = `
   p-6 bg-[#1c1c1c] border-white/10 h-full 
@@ -340,132 +308,84 @@ export default function DashboardPage() {
 
   return (
     <div className="p-8 space-y-8">
-      <motion.div
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { 
-            opacity: 1,
-            transition: { staggerChildren: 0.1 }
-          }
-        }}
-        initial="hidden"
-        animate="visible"
-      >
+      <div>
         <div className="space-y-8">
           {/* First Row - Key Metrics */}
-          <motion.div
-            variants={containerVariants}
-          >
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {/* Calories Card */}
-              <motion.div variants={itemVariants}>
-                <motion.div
-                  whileHover="hover"
-                  variants={cardVariants}
-                >
-                  <div className="h-full">
-                    <Card className={cardStyle}>
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-lg font-medium text-white">Calories</h3>
-                        <Flame className="h-5 w-5 text-orange-400" />
-                      </div>
-                      <div className="mt-4">
-                        <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
-                        <p className="text-sm text-gray-400">daily target</p>
-                      </div>
-                    </Card>
-                  </div>
-                </motion.div>
-              </motion.div>
-
-              {/* Protein Card */}
-              <motion.div variants={itemVariants}>
-                <motion.div
-                  whileHover="hover"
-                  variants={cardVariants}
-                  className="h-full"
-                >
-                  <Card className={cardStyle}>
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-medium text-white">Protein</h3>
-                      <Dumbbell className="h-5 w-5 text-blue-400" />
-                    </div>
-                    <div className="mt-4">
-                      <div className="text-3xl font-bold text-white">{nutritionData?.macros.protein}g</div>
-                      <p className="text-sm text-gray-400">daily target</p>
-                    </div>
-                  </Card>
-                </motion.div>
-              </motion.div>
-
-              {/* Carbs Card */}
-              <motion.div variants={itemVariants}>
-                <motion.div
-                  whileHover="hover"
-                  variants={cardVariants}
-                  className="h-full"
-                >
-                  <Card className={cardStyle}>
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-medium text-white">Carbs</h3>
-                      <Croissant className="h-5 w-5 text-yellow-400" />
-                    </div>
-                    <div className="mt-4">
-                      <div className="text-3xl font-bold text-white">{nutritionData?.macros.carbs}g</div>
-                      <p className="text-sm text-gray-400">daily target</p>
-                    </div>
-                  </Card>
-                </motion.div>
-              </motion.div>
-
-              {/* Fats Card */}
-              <motion.div variants={itemVariants}>
-                <motion.div
-                  whileHover="hover"
-                  variants={cardVariants}
-                  className="h-full"
-                >
-                  <Card className={cardStyle}>
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-medium text-white">Fats</h3>
-                      <Droplets className="h-5 w-5 text-red-400" />
-                    </div>
-                    <div className="mt-4">
-                      <div className="text-3xl font-bold text-white">{nutritionData?.macros.fats}g</div>
-                      <p className="text-sm text-gray-400">daily target</p>
-                    </div>
-                  </Card>
-                </motion.div>
-              </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            {/* Calories Card */}
+            <div className="h-full">
+              <Card className={cardStyle}>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-medium text-white">Calories</h3>
+                  <Flame className="h-5 w-5 text-orange-400" />
+                </div>
+                <div className="mt-4">
+                  <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
+                  <p className="text-sm text-gray-400">daily target</p>
+                </div>
+              </Card>
             </div>
-          </motion.div>
+
+            {/* Protein Card */}
+            <div className="h-full">
+              <Card className={cardStyle}>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-medium text-white">Protein</h3>
+                  <Dumbbell className="h-5 w-5 text-blue-400" />
+                </div>
+                <div className="mt-4">
+                  <div className="text-3xl font-bold text-white">{nutritionData?.macros.protein}g</div>
+                  <p className="text-sm text-gray-400">daily target</p>
+                </div>
+              </Card>
+            </div>
+
+            {/* Carbs Card */}
+            <div className="h-full">
+              <Card className={cardStyle}>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-medium text-white">Carbs</h3>
+                  <Croissant className="h-5 w-5 text-yellow-400" />
+                </div>
+                <div className="mt-4">
+                  <div className="text-3xl font-bold text-white">{nutritionData?.macros.carbs}g</div>
+                  <p className="text-sm text-gray-400">daily target</p>
+                </div>
+              </Card>
+            </div>
+
+            {/* Fats Card */}
+            <div className="h-full">
+              <Card className={cardStyle}>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-medium text-white">Fats</h3>
+                  <Droplets className="h-5 w-5 text-red-400" />
+                </div>
+                <div className="mt-4">
+                  <div className="text-3xl font-bold text-white">{nutritionData?.macros.fats}g</div>
+                  <p className="text-sm text-gray-400">daily target</p>
+                </div>
+              </Card>
+            </div>
+          </div>
 
           {/* Second Row - Charts */}
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-2 gap-4"
-            variants={containerVariants}
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Macros Distribution */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover="hover"
-                variants={cardVariants}
-                className="h-full"
-              >
-                <Card className={cardStyle}>
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-medium text-white">Macros Distribution</h3>
-                    <Cookie className="h-5 w-5 text-orange-400" />
-                  </div>
-                  <div className="h-[300px] flex items-center justify-center">
-                    <Doughnut data={chartData} options={chartOptions} />
-                  </div>
-                </Card>
-              </motion.div>
-            </motion.div>
+            <div className="h-full">
+              <Card className={cardStyle}>
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-lg font-medium text-white">Macros Distribution</h3>
+                  <Cookie className="h-5 w-5 text-orange-400" />
+                </div>
+                <div className="h-[300px] flex items-center justify-center">
+                  <Doughnut data={chartData} options={chartOptions} />
+                </div>
+              </Card>
+            </div>
 
             {/* Micronutrients */}
-            <motion.div variants={itemVariants}>
+            <div className="h-full">
               <Card className="p-6 bg-[#1c1c1c] border-white/10 h-full">
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-lg font-medium text-white">Micronutrients</h3>
@@ -480,26 +400,23 @@ export default function DashboardPage() {
                 {/* Micronutrient Pills */}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-6">
                   {nutritionData?.micronutrients.map((nutrient, index) => (
-                    <motion.div
+                    <div
                       key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
                       className="bg-white/5 p-3 rounded-lg border border-white/10 flex items-center justify-between"
                     >
                       <span className="text-sm text-gray-300">{nutrient.name}</span>
                       <div className="flex items-center gap-2">
                         <div className="h-2 w-2 rounded-full bg-purple-400" />
                       </div>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
               </Card>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
           {/* Third Row - Todo List */}
-          <motion.div variants={itemVariants}>
+          <div className="h-full">
             <Card className={cardStyle}>
               <div className="flex items-center justify-between mb-6">
                 <h3 className="text-lg font-medium text-white">Daily Tasks</h3>
@@ -523,47 +440,42 @@ export default function DashboardPage() {
                 </Button>
               </div>
 
-              <AnimatePresence mode='popLayout'>
-                {todos.map((todo) => (
-                  <motion.div
-                    key={todo.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    className={`flex items-center gap-3 p-3 rounded-lg mb-2 ${
+              {todos.map((todo) => (
+                <div
+                  key={todo.id}
+                  className={`flex items-center gap-3 p-3 rounded-lg mb-2 ${
+                    todo.completed
+                      ? 'bg-green-500/10 line-through text-gray-400'
+                      : 'bg-white/5 text-gray-200'
+                  } ${todo.isNutritionTask ? 'border-l-2 border-blue-500' : ''}`}
+                >
+                  <button
+                    onClick={() => toggleTodo(todo.id)}
+                    className={`flex-shrink-0 w-5 h-5 rounded border ${
                       todo.completed
-                        ? 'bg-green-500/10 line-through text-gray-400'
-                        : 'bg-white/5 text-gray-200'
-                    } ${todo.isNutritionTask ? 'border-l-2 border-blue-500' : ''}`}
+                        ? 'bg-green-500 border-green-500'
+                        : 'border-gray-400'
+                    } flex items-center justify-center`}
                   >
+                    {todo.completed && <Check className="h-3 w-3 text-white" />}
+                  </button>
+
+                  <span className="flex-grow">{todo.text}</span>
+
+                  {!todo.isNutritionTask && (
                     <button
-                      onClick={() => toggleTodo(todo.id)}
-                      className={`flex-shrink-0 w-5 h-5 rounded border ${
-                        todo.completed
-                          ? 'bg-green-500 border-green-500'
-                          : 'border-gray-400'
-                      } flex items-center justify-center`}
+                      onClick={() => deleteTodo(todo.id)}
+                      className="text-gray-400 hover:text-red-400"
                     >
-                      {todo.completed && <Check className="h-3 w-3 text-white" />}
+                      <Trash2 className="h-4 w-4" />
                     </button>
-
-                    <span className="flex-grow">{todo.text}</span>
-
-                    {!todo.isNutritionTask && (
-                      <button
-                        onClick={() => deleteTodo(todo.id)}
-                        className="text-gray-400 hover:text-red-400"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </button>
-                    )}
-                  </motion.div>
-                ))}
-              </AnimatePresence>
+                  )}
+                </div>
+              ))}
             </Card>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
