@@ -362,18 +362,19 @@ export default function DashboardPage() {
                 <motion.div
                   whileHover="hover"
                   variants={cardVariants}
-                  className="h-full"
                 >
-                  <Card className={cardStyle}>
-                    <div className="flex items-center justify-between">
-                      <h3 className="text-lg font-medium text-white">Calories</h3>
-                      <Flame className="h-5 w-5 text-orange-400" />
-                    </div>
-                    <div className="mt-4">
-                      <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
-                      <p className="text-sm text-gray-400">daily target</p>
-                    </div>
-                  </Card>
+                  <div className="h-full">
+                    <Card className={cardStyle}>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-lg font-medium text-white">Calories</h3>
+                        <Flame className="h-5 w-5 text-orange-400" />
+                      </div>
+                      <div className="mt-4">
+                        <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
+                        <p className="text-sm text-gray-400">daily target</p>
+                      </div>
+                    </Card>
+                  </div>
                 </motion.div>
               </motion.div>
 
