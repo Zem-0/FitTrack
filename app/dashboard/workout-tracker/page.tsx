@@ -8,11 +8,21 @@ import { useUser } from "@clerk/nextjs";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { HeartPulse, Dumbbell, Plus } from 'lucide-react';
 
+// Define the workout type
+interface Workout {
+  id?: string;
+  name: string;
+  duration: string;
+  calories: string;
+  type: 'cardio' | 'strength';
+  // Add other fields as needed
+}
+
 export default function WorkoutTrackerPage() {
   const { user } = useUser();
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [cardioWorkout, setCardioWorkout] = useState({
+  const [cardioWorkout, setCardioWorkout] = useState<Workout>({
     name: '',
     duration: '',
     calories: '',
