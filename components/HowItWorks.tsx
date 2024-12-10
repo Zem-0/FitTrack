@@ -1,5 +1,4 @@
 'use client'
-import { motion } from 'framer-motion'
 import { 
   ClipboardList, 
   Activity, 
@@ -53,18 +52,10 @@ export default function HowItWorks() {
     <section id="how-it-works" className="relative py-20 overflow-hidden bg-[#030303]">
       <div className="absolute inset-0 overflow-hidden">
         {/* Moving Gradient Background */}
-        <motion.div 
+        <div 
           className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600/50 to-blue-500 opacity-20"
           style={{
             backgroundSize: "200% 200%",
-          }}
-          animate={{
-            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
           }}
         />
 
@@ -85,10 +76,10 @@ export default function HowItWorks() {
         />
 
         {/* Glowing Orbs */}
-        <motion.div
+        <div
           className="absolute -right-40 -top-40 h-96 w-96 animate-pulse-slow rounded-full bg-blue-500/20 blur-3xl"
         />
-        <motion.div
+        <div
           className="absolute -left-40 -bottom-40 h-96 w-96 animate-pulse-slow rounded-full bg-purple-500/20 blur-3xl"
         />
 
@@ -98,11 +89,7 @@ export default function HowItWorks() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+        <div
           className="text-center mb-20"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -114,48 +101,38 @@ export default function HowItWorks() {
           <p className="text-gray-400 max-w-2xl mx-auto">
             Follow these simple steps to start your fitness journey and achieve your goals.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={step.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="relative p-6 bg-gradient-to-b from-white/[0.08] to-transparent rounded-2xl border border-white/[0.08] group backdrop-blur-sm"
             >
-              <motion.div
-                whileHover={{ scale: 1.05, translateY: -5 }}
-                className="relative p-6 bg-gradient-to-b from-white/[0.08] to-transparent rounded-2xl border border-white/[0.08] group backdrop-blur-sm"
-              >
-                {/* Hover Glow Effect */}
-                <motion.div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{
-                    background: `radial-gradient(circle at center, rgba(59,130,246,0.1) 0%, transparent 70%)`,
-                  }}
-                />
+              {/* Hover Glow Effect */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: `radial-gradient(circle at center, rgba(59,130,246,0.1) 0%, transparent 70%)`,
+                }}
+              />
 
-                <div className="relative z-10">
-                  <motion.div
-                    whileHover={{ rotate: [0, -10, 10, 0] }}
-                    transition={{ duration: 0.5 }}
-                    className={`w-12 h-12 rounded-lg bg-gradient-to-r ${step.color} flex items-center justify-center mb-4`}
-                  >
-                    <step.icon className="w-6 h-6 text-white" />
-                  </motion.div>
-
-                  <h3 className="text-xl font-semibold text-white mb-2">
-                    {step.title}
-                  </h3>
-                  
-                  <p className="text-gray-400">
-                    {step.description}
-                  </p>
+              <div className="relative z-10">
+                <div
+                  className={`w-12 h-12 rounded-lg bg-gradient-to-r ${step.color} flex items-center justify-center mb-4`}
+                >
+                  <step.icon className="w-6 h-6 text-white" />
                 </div>
-              </motion.div>
-            </motion.div>
+
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {step.title}
+                </h3>
+                
+                <p className="text-gray-400">
+                  {step.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
