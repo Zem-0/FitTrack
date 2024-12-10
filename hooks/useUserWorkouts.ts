@@ -8,6 +8,8 @@ interface Workout {
   name: string;
   duration: number;
   calories: number;
+  type: 'cardio' | 'strength';  // Add this line
+
 }
 
 export function useUserWorkouts() {

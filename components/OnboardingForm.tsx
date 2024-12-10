@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { motion } from "framer-motion"
 import { useRouter } from "next/navigation"
 import { toast } from "react-hot-toast"
 
@@ -32,7 +31,6 @@ export default function OnboardingForm() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       localStorage.setItem('userProfile', JSON.stringify(values));
-      
       router.push('/dashboard');
       toast.success('Profile created successfully');
     } catch (error) {
@@ -43,11 +41,8 @@ export default function OnboardingForm() {
 
   return (
     <div className="min-h-screen bg-[#030303] flex items-center justify-center px-4">
-      <motion.div 
-        className="w-full max-w-md space-y-8 bg-white/5 p-8 rounded-lg border border-white/10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+      <div 
+        className="w-full max-w-md space-y-8 bg-white/5 p-8 rounded-lg border border-white/10 transition-all duration-500 hover:border-white/20"
       >
         <div className="text-center">
           <h2 className="text-2xl font-bold text-white">Complete Your Profile</h2>
@@ -120,16 +115,14 @@ export default function OnboardingForm() {
             </select>
           </div>
 
-          <motion.button
+          <button
             type="submit"
-            className="w-full rounded-lg bg-blue-600 py-3 text-white font-medium hover:bg-blue-700 transition-colors"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            className="w-full rounded-lg bg-blue-600 py-3 text-white font-medium hover:bg-blue-700 transition-colors hover:scale-[1.02] active:scale-[0.98]"
           >
             Complete Profile
-          </motion.button>
+          </button>
         </form>
-      </motion.div>
+      </div>
     </div>
   )
 } 

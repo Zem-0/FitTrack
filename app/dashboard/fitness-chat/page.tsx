@@ -44,17 +44,11 @@ export default function FitnessChatPage() {
     try {
       const response = await fetch('/api/chat', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          message: userMessage,
-        }),
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: userMessage }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch response');
-      }
+      if (!response.ok) throw new Error('Failed to fetch response');
 
       const data = await response.json();
       setMessages(prev => [...prev, { role: 'assistant', content: data.message }]);
@@ -72,7 +66,7 @@ export default function FitnessChatPage() {
   return (
     <div className="flex-1 h-[calc(100vh-6rem)] p-6">
       <div className="max-w-[1200px] mx-auto h-full flex flex-col">
-        <div className="flex items-center justify-between mb-6 bg-gradient-to-r from-slate-800 to-slate-900 p-4 rounded-lg shadow-lg border border-slate-700">
+        <div className="flex items-center justify-between mb-6 bg-gradient-to-r from-slate-800 to-slate-900 p-4 rounded-lg shadow-lg border border-slate-700 transition-all duration-300 hover:border-slate-600">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-md bg-purple-500/10 backdrop-blur-sm">
               <Dumbbell className="h-6 w-6 text-purple-400" />
@@ -91,7 +85,7 @@ export default function FitnessChatPage() {
                   key={index}
                   className={`flex gap-3 ${
                     message.role === 'user' ? 'justify-end' : 'justify-start'
-                  }`}
+                  } transition-all duration-300 hover:translate-y-[-2px]`}
                 >
                   {message.role === 'assistant' && (
                     <div className="w-8 h-8 rounded-full bg-purple-500/10 text-purple-500 flex items-center justify-center flex-shrink-0">
@@ -100,10 +94,10 @@ export default function FitnessChatPage() {
                   )}
                   <div
                     className={cn(
-                      "rounded-lg px-4 py-2 max-w-[85%] shadow-md",
+                      "rounded-lg px-4 py-2 max-w-[85%] shadow-md transition-all duration-300",
                       message.role === 'user'
-                        ? "bg-blue-500/10 text-blue-100 ml-12"
-                        : "bg-slate-700/60 text-slate-100 mr-12"
+                        ? "bg-blue-500/10 text-blue-100 ml-12 hover:bg-blue-500/20"
+                        : "bg-slate-700/60 text-slate-100 mr-12 hover:bg-slate-700/80"
                     )}
                   >
                     <p className="text-sm leading-relaxed">{message.content}</p>
@@ -120,7 +114,7 @@ export default function FitnessChatPage() {
                   <div className="w-8 h-8 rounded-full bg-purple-500/10 text-purple-500 flex items-center justify-center">
                     <Bot size={20} />
                   </div>
-                  <div className="rounded-lg px-4 py-2 bg-slate-700">
+                  <div className="rounded-lg px-4 py-2 bg-slate-700 animate-pulse">
                     <p className="text-sm">Typing...</p>
                   </div>
                 </div>
@@ -134,9 +128,13 @@ export default function FitnessChatPage() {
                 placeholder="Ask me anything about fitness..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                className="bg-slate-900"
+                className="bg-slate-900 transition-all duration-300 focus:ring-2 focus:ring-blue-500"
               />
-              <Button type="submit" disabled={isLoading}>
+              <Button 
+                type="submit" 
+                disabled={isLoading}
+                className="transition-all duration-300 hover:scale-105"
+              >
                 <Send className="h-4 w-4" />
               </Button>
             </div>
