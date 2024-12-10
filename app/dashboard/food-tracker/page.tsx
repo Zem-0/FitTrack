@@ -155,7 +155,7 @@ export default function FoodTrackerPage() {
           <div className="flex items-center gap-2 bg-white/5 rounded-lg p-2">
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={() => setSelectedDate(prev => {
                 const newDate = new Date(prev);
                 newDate.setDate(prev.getDate() - 1);
@@ -173,7 +173,7 @@ export default function FoodTrackerPage() {
             />
             <Button
               variant="ghost"
-              size="icon"
+              size="sm"
               onClick={() => setSelectedDate(prev => {
                 const newDate = new Date(prev);
                 newDate.setDate(prev.getDate() + 1);
