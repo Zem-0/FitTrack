@@ -48,23 +48,23 @@ const features = [
   }
 ]
 
+const GradientBackground = motion.div;
+
 export default function Features() {
   return (
     <section id="features" className="relative py-20 overflow-hidden bg-[#030303]">
       <div className="absolute inset-0 overflow-hidden">
-        {/* Moving Gradient Background - matches Hero */}
-        <motion.div 
+        {/* Moving Gradient Background */}
+        <GradientBackground 
           className="absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600/50 to-blue-500 opacity-20"
-          style={{
-            backgroundSize: "200% 200%",
-          }}
+          style={{ backgroundSize: '200% 100%' }}
           animate={{
-            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            backgroundPosition: ['0% 0%', '100% 0%', '0% 0%'],
           }}
           transition={{
-            duration: 20,
+            duration: 15,
             repeat: Infinity,
-            ease: "linear"
+            ease: 'linear',
           }}
         />
 
