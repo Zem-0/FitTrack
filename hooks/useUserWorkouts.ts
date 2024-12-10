@@ -1,28 +1,30 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { useAuth } from '@clerk/nextjs';
 
 export function useUserWorkouts() {
-  const { userId } = useAuth();
   const [workouts, setWorkouts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const { userId } = useAuth();
 
   useEffect(() => {
-    const fetchWorkouts = async () => {
-      if (!userId) return;
-
+    async function fetchWorkouts() {
       try {
         const response = await fetch('/api/workouts');
         const data = await response.json();
-        
-        if (data && !data.error) {
-          setWorkouts(data);
-        }
+        setWorkouts(data);
       } catch (error) {
         console.error('Error fetching workouts:', error);
+      } finally {
+        setLoading(false);
       }
-    };
+    }
 
-    fetchWorkouts();
+    if (userId) {
+      fetchWorkouts();
+    }
   }, [userId]);
 
-  return workouts;
+  return { workouts, loading };
 } 
