@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 export async function updateProfile(userId: string, profileData: any) {
   try {
-    await prisma.profile.upsert({
+    await prisma.userProfile.upsert({
       where: { userId },
       update: profileData,
       create: {
