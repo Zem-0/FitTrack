@@ -2,7 +2,7 @@
 
 A modern fitness tracking application built with Next.js, featuring a sleek dark theme and comprehensive workout management.
 
-![FitTrack Dashboard](pics/Screenshot 2024-12-10 210850.png)
+![FitTrack Dashboard](./pics/Screenshot 2024-12-10 210850.png)
 
 ## ✨ Features
 
