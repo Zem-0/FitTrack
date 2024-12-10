@@ -111,7 +111,7 @@ export default function DiaryPage() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity }}
-                className="mr-2"
+                style={{ marginRight: '0.5rem' }}
               >
                 <Brain className="h-5 w-5" />
               </motion.div>
