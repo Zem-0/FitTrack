@@ -36,6 +36,7 @@ export default function FoodTrackingPage() {
   const [foodLogs, setFoodLogs] = useState<FoodLog[]>([]);
   const [currentAnalysis, setCurrentAnalysis] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const cardStyle = "rounded-lg shadow-md text-center";
 
   const analyzeFood = async () => {
     if (!foodInput.trim()) return;
