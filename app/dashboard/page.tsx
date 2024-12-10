@@ -44,6 +44,15 @@ ChartJS.register(
   Title
 );
 
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
 interface UserProfile {
   height: number;
   weight: number;
@@ -61,7 +70,12 @@ interface NutritionData {
     fats: number;
   };
   water: number;
-  micronutrients: string[];
+  micronutrients: {
+    name: string;
+    current: number;
+    target: number;
+    unit: string;
+  }[];
   mealTiming: string[];
   tips: string[];
 }
@@ -218,41 +232,62 @@ export default function DashboardPage() {
 
   const microChartData = {
     labels: nutritionData?.micronutrients || [],
-    datasets: [{
-      label: 'Daily Values',
-      data: nutritionData?.micronutrients.map(() => 100) || [],
-      backgroundColor: 'rgba(147, 51, 234, 0.5)',
-      borderColor: 'rgba(147, 51, 234, 0.8)',
-      borderWidth: 1
-    }]
+    datasets: [
+      {
+        label: 'Current Intake',
+        data: nutritionData?.micronutrients.map(() => Math.floor(Math.random() * 100)) || [], // Replace with actual data
+        backgroundColor: 'rgba(147, 51, 234, 0.8)', // Purple
+        borderColor: 'rgba(147, 51, 234, 1)',
+        borderWidth: 1,
+      },
+      {
+        label: 'Daily Target',
+        data: nutritionData?.micronutrients.map(() => 100) || [], // Replace with actual targets
+        backgroundColor: 'rgba(59, 130, 246, 0.3)', // Light blue
+        borderColor: 'rgba(59, 130, 246, 0.5)',
+        borderWidth: 1,
+      },
+    ],
   };
 
   const microChartOptions = {
     responsive: true,
-    scales: {
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: 'rgba(255, 255, 255, 0.1)'
-        },
-        ticks: {
-          color: 'rgba(255, 255, 255, 0.7)'
-        }
-      },
-      x: {
-        grid: {
-          color: 'rgba(255, 255, 255, 0.1)'
-        },
-        ticks: {
-          color: 'rgba(255, 255, 255, 0.7)'
-        }
-      }
-    },
+    maintainAspectRatio: false,
+    indexAxis: 'y' as const,
     plugins: {
       legend: {
-        display: false
-      }
-    }
+        position: 'bottom' as const,
+        labels: {
+          color: 'white',
+          font: { size: 12 },
+          padding: 20,
+        },
+      },
+      tooltip: {
+        mode: 'index' as const,
+        intersect: false,
+      },
+    },
+    scales: {
+      x: {
+        stacked: false,
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)',
+        },
+        ticks: {
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+      },
+      y: {
+        stacked: false,
+        grid: {
+          display: false,
+        },
+        ticks: {
+          color: 'rgba(255, 255, 255, 0.7)',
+        },
+      },
+    },
   };
 
   const addTodo = () => {
@@ -429,21 +464,35 @@ export default function DashboardPage() {
 
             {/* Micronutrients */}
             <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover="hover"
-                variants={cardVariants}
-                className="h-full"
-              >
-                <Card className={cardStyle}>
-                  <div className="flex items-center justify-between mb-6">
-                    <h3 className="text-lg font-medium text-white">Micronutrients</h3>
-                    <Target className="h-5 w-5 text-purple-400" />
-                  </div>
-                  <div className="h-[300px]">
-                    <Bar data={microChartData} options={microChartOptions} />
-                  </div>
-                </Card>
-              </motion.div>
+              <Card className="p-6 bg-[#1c1c1c] border-white/10 h-full">
+                <div className="flex items-center justify-between mb-6">
+                  <h3 className="text-lg font-medium text-white">Micronutrients</h3>
+                  <Target className="h-5 w-5 text-purple-400" />
+                </div>
+                
+                {/* Chart Container */}
+                <div className="h-[300px] mb-4">
+                  <Bar data={microChartData} options={microChartOptions} />
+                </div>
+                
+                {/* Micronutrient Pills */}
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mt-6">
+                  {nutritionData?.micronutrients.map((nutrient, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      className="bg-white/5 p-3 rounded-lg border border-white/10 flex items-center justify-between"
+                    >
+                      <span className="text-sm text-gray-300">{nutrient.name}</span>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-purple-400" />
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </Card>
             </motion.div>
           </motion.div>
 
