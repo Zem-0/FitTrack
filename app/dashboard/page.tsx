@@ -353,89 +353,90 @@ export default function DashboardPage() {
       >
         <div className="space-y-8">
           {/* First Row - Key Metrics */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+          <motion.div
             variants={containerVariants}
           >
-            {/* Calories Card */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover="hover"
-                variants={cardVariants}
-                className="h-full"
-              >
-                <Card className={cardStyle}>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Calories</h3>
-                    <Flame className="h-5 w-5 text-orange-400" />
-                  </div>
-                  <div className="mt-4">
-                    <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
-                    <p className="text-sm text-gray-400">daily target</p>
-                  </div>
-                </Card>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {/* Calories Card */}
+              <motion.div variants={itemVariants}>
+                <motion.div
+                  whileHover="hover"
+                  variants={cardVariants}
+                  className="h-full"
+                >
+                  <Card className={cardStyle}>
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-medium text-white">Calories</h3>
+                      <Flame className="h-5 w-5 text-orange-400" />
+                    </div>
+                    <div className="mt-4">
+                      <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
+                      <p className="text-sm text-gray-400">daily target</p>
+                    </div>
+                  </Card>
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Protein Card */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover="hover"
-                variants={cardVariants}
-                className="h-full"
-              >
-                <Card className={cardStyle}>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Protein</h3>
-                    <Dumbbell className="h-5 w-5 text-blue-400" />
-                  </div>
-                  <div className="mt-4">
-                    <div className="text-3xl font-bold text-white">{nutritionData?.macros.protein}g</div>
-                    <p className="text-sm text-gray-400">daily target</p>
-                  </div>
-                </Card>
+              {/* Protein Card */}
+              <motion.div variants={itemVariants}>
+                <motion.div
+                  whileHover="hover"
+                  variants={cardVariants}
+                  className="h-full"
+                >
+                  <Card className={cardStyle}>
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-medium text-white">Protein</h3>
+                      <Dumbbell className="h-5 w-5 text-blue-400" />
+                    </div>
+                    <div className="mt-4">
+                      <div className="text-3xl font-bold text-white">{nutritionData?.macros.protein}g</div>
+                      <p className="text-sm text-gray-400">daily target</p>
+                    </div>
+                  </Card>
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Carbs Card */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover="hover"
-                variants={cardVariants}
-                className="h-full"
-              >
-                <Card className={cardStyle}>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Carbs</h3>
-                    <Croissant className="h-5 w-5 text-yellow-400" />
-                  </div>
-                  <div className="mt-4">
-                    <div className="text-3xl font-bold text-white">{nutritionData?.macros.carbs}g</div>
-                    <p className="text-sm text-gray-400">daily target</p>
-                  </div>
-                </Card>
+              {/* Carbs Card */}
+              <motion.div variants={itemVariants}>
+                <motion.div
+                  whileHover="hover"
+                  variants={cardVariants}
+                  className="h-full"
+                >
+                  <Card className={cardStyle}>
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-medium text-white">Carbs</h3>
+                      <Croissant className="h-5 w-5 text-yellow-400" />
+                    </div>
+                    <div className="mt-4">
+                      <div className="text-3xl font-bold text-white">{nutritionData?.macros.carbs}g</div>
+                      <p className="text-sm text-gray-400">daily target</p>
+                    </div>
+                  </Card>
+                </motion.div>
               </motion.div>
-            </motion.div>
 
-            {/* Fats Card */}
-            <motion.div variants={itemVariants}>
-              <motion.div
-                whileHover="hover"
-                variants={cardVariants}
-                className="h-full"
-              >
-                <Card className={cardStyle}>
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-medium text-white">Fats</h3>
-                    <Droplets className="h-5 w-5 text-red-400" />
-                  </div>
-                  <div className="mt-4">
-                    <div className="text-3xl font-bold text-white">{nutritionData?.macros.fats}g</div>
-                    <p className="text-sm text-gray-400">daily target</p>
-                  </div>
-                </Card>
+              {/* Fats Card */}
+              <motion.div variants={itemVariants}>
+                <motion.div
+                  whileHover="hover"
+                  variants={cardVariants}
+                  className="h-full"
+                >
+                  <Card className={cardStyle}>
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-lg font-medium text-white">Fats</h3>
+                      <Droplets className="h-5 w-5 text-red-400" />
+                    </div>
+                    <div className="mt-4">
+                      <div className="text-3xl font-bold text-white">{nutritionData?.macros.fats}g</div>
+                      <p className="text-sm text-gray-400">daily target</p>
+                    </div>
+                  </Card>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Second Row - Charts */}
