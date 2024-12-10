@@ -268,7 +268,7 @@ export default function FoodTrackerPage() {
                         <div className="flex items-center gap-2">
                           <Button
                             variant="ghost"
-                            size="icon"
+                            size="sm"
                             className="bg-white/5 text-blue-400 hover:text-blue-300 hover:bg-blue-600/20"
                             onClick={() => setEditingMeal(meal)}
                           >
