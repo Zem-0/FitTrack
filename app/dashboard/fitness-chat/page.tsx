@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { useUser } from "@clerk/nextjs";
 import { Send, Bot, User, Dumbbell } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +14,6 @@ interface Message {
 }
 
 export default function FitnessChatPage() {
-  const { user } = useUser();
   const [messages, setMessages] = useState<Message[]>([
     {
       role: 'assistant',

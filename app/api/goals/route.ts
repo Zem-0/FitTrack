@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import { auth } from '@clerk/nextjs';
 
-export async function GET(request: Request) {
+export async function GET() {
   try {
     const { userId } = await auth();
     console.log('Authenticated userId:', userId);
