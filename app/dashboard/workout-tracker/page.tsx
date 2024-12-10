@@ -15,7 +15,10 @@ interface Workout {
   duration: string;
   calories: string;
   type: 'cardio' | 'strength';
-  // Add other fields as needed
+  // Add optional fields for strength workouts
+  sets?: string;
+  reps?: string;
+  weight?: string;
 }
 
 export default function WorkoutTrackerPage() {
@@ -279,39 +282,20 @@ export default function WorkoutTrackerPage() {
 
         <div className="space-y-4">
           {workouts.map((workout) => (
-            <Card 
-              key={workout.id} 
-              className={`p-4 border-2 ${
-                workout.type === 'cardio' 
-                  ? 'border-purple-700 bg-gradient-to-br from-purple-900 to-slate-900' 
-                  : 'border-blue-700 bg-gradient-to-br from-blue-900 to-slate-900'
-              }`}
-            >
+            <div key={workout.id} className="rounded-lg border border-white/10 bg-white/5 p-4">
               <div className="flex justify-between items-center">
-                <div>
-                  <div className="flex items-center gap-2">
-                    {workout.type === 'cardio' ? (
-                      <HeartPulse className="h-5 w-5 text-purple-300" />
-                    ) : (
-                      <Dumbbell className="h-5 w-5 text-blue-300" />
-                    )}
-                    <h3 className="font-semibold text-lg text-white">{workout.name}</h3>
-                  </div>
-                  {workout.type === 'weight' ? (
-                    <p className="text-sm text-gray-300 mt-1">
-                      {workout.sets} sets × {workout.reps} reps @ {workout.weight}kg
-                    </p>
-                  ) : (
-                    <p className="text-sm text-gray-300 mt-1">
-                      Duration: {workout.duration} minutes
-                    </p>
-                  )}
-                  <p className="text-sm text-gray-300">
-                    Calories: {workout.calories}
-                  </p>
-                </div>
+                <h3 className="font-semibold text-lg text-white">{workout.name}</h3>
               </div>
-            </Card>
+              {workout.type === 'strength' ? (
+                <p className="text-sm text-gray-300 mt-1">
+                  {workout.sets} sets × {workout.reps} reps @ {workout.weight}kg
+                </p>
+              ) : (
+                <p className="text-sm text-gray-300 mt-1">
+                  Duration: {workout.duration} minutes • Calories: {workout.calories}
+                </p>
+              )}
+            </div>
           ))}
         </div>
       </div>
