@@ -5,7 +5,6 @@ A modern fitness tracking application built with Next.js, featuring a sleek dark
 ![FitTrack Dashboard](https://github.com/Zem-0/FitTrack/blob/main/pics/Screenshot%202024-12-10%20210850.png)
 
 ## ✨ Features
-
 ### 🎯 Workout Tracking
 - Create and manage custom workouts
 - Track both cardio and strength training
@@ -57,15 +56,19 @@ npm run dev
 ## 📸 Screenshots
 
 ### Dashboard
-![Dashboard View](dashboard-screenshot.png)
+![FitTrack Dashboard](https://github.com/Zem-0/FitTrack/blob/main/pics/Screenshot%202024-12-10%20202948.png)
 *Main dashboard with workout overview and quick actions*
 
 ### Workout Tracking
-![Workout Tracking](workout-screenshot.png)
+![Workout Tracking](https://github.com/Zem-0/FitTrack/blob/main/pics/Screenshot%202024-12-10%20204947.png)
 *Detailed workout logging interface*
 
 ### Progress View
-![Progress Tracking](progress-screenshot.png)
+![Progress Tracking](https://github.com/Zem-0/FitTrack/blob/main/pics/Screenshot%202024-12-10%20204440.png)
+*Visual representation of fitness progress*
+
+### Personalised AI chat Bot 
+![Progress Tracking](https://github.com/Zem-0/FitTrack/blob/main/pics/Screenshot%202024-12-10%20205047.png)
 *Visual representation of fitness progress*
 
 ## 🛠️ Built With
