@@ -277,7 +277,7 @@ export default function FoodTrackerPage() {
                           </Button>
                           <Button
                             variant="ghost"
-                            size="icon"
+                            size="sm"
                             className="bg-white/5 text-red-400 hover:text-red-300 hover:bg-red-600/20"
                             onClick={() => deleteMeal(meal.id)}
                           >
