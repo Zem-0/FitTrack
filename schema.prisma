@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String      @id @default(cuid())
+  email     String?     // Make email optional
+  name      String?
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  workouts  Workout[]
+  meals     Meal[]
+  goals     Goals?
+  profile   UserProfile? // Updated relation to UserProfile
+}
+
+model UserProfile {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Additional fields for user profile
+  height    Float?
+  weight    Float?
+  age       Int?
+  gender    String?
+}
+
+model Goals {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  calories  Int
+  protein   Int
+  carbs     Int
+  fat       Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Meal {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  name      String
+  calories  Int
+  protein   Int
+  carbs     Int
+  fat       Int
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Workout {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  name      String
+  type      String   @default("cardio")
+  sets      Int?     // for weight training
+  reps      Int?     // for weight training
+  weight    Int?     // for weight training (in kg)
+  duration  Int
+  calories  Int
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+} 
