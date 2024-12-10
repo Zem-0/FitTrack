@@ -1,30 +1,24 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useAuth } from '@clerk/nextjs';
+import { useUser } from '@clerk/nextjs';
+
+interface Workout {
+  id: string;
+  name: string;
+  duration: number;
+  calories: number;
+}
 
 export function useUserWorkouts() {
-  const [workouts, setWorkouts] = useState([]);
+  const { user } = useUser();
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [loading, setLoading] = useState(true);
-  const { userId } = useAuth();
 
   useEffect(() => {
-    async function fetchWorkouts() {
-      try {
-        const response = await fetch('/api/workouts');
-        const data = await response.json();
-        setWorkouts(data);
-      } catch (error) {
-        console.error('Error fetching workouts:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    if (userId) {
-      fetchWorkouts();
-    }
-  }, [userId]);
+    // Add your workout fetching logic here
+    setLoading(false);
+  }, [user?.id]);
 
   return { workouts, loading };
 } 
