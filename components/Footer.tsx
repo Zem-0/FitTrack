@@ -1,93 +1,63 @@
 'use client'
-import { motion } from 'framer-motion'
-import { Facebook, Twitter, Instagram } from 'lucide-react'
 
 const navigation = {
   main: [
     { name: 'About', href: '#' },
+    { name: 'Features', href: '#features' },
+    { name: 'Pricing', href: '#pricing-section' },
+    { name: 'Company', href: '#' },
     { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Accessibility', href: '#' },
-    { name: 'Partners', href: '#' },
   ],
   social: [
     {
-      name: 'Facebook',
-      href: '#',
-      icon: Facebook,
-    },
-    {
       name: 'Twitter',
       href: '#',
-      icon: Twitter,
+      icon: (props: any) => (
+        <svg fill="currentColor" viewBox="0 0 24 24" {...props}>
+          <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+        </svg>
+      ),
     },
-    {
-      name: 'Instagram',
-      href: '#',
-      icon: Instagram,
-    },
+    // ... other social icons
   ],
 }
 
 export default function Footer() {
   return (
-    <footer className="bg-[#030303] border-t border-[#1d1d1d]">
+    <footer className="relative bg-[#030303]">
       <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
-        <motion.nav 
+        <nav 
           className="-mb-6 columns-2 sm:flex sm:justify-center sm:space-x-12" 
           aria-label="Footer"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
         >
           {navigation.main.map((item) => (
-            <motion.div 
-              key={item.name} 
-              className="pb-6"
-              whileHover={{ y: -2 }}
-            >
-              <a 
-                href={item.href} 
-                className="text-sm leading-6 text-[#AAAAAA] hover:text-white transition-colors duration-300"
+            <div key={item.name} className="pb-6">
+              <a
+                href={item.href}
+                className="text-sm leading-6 text-gray-400 hover:text-gray-200"
               >
                 {item.name}
               </a>
-            </motion.div>
+            </div>
           ))}
-        </motion.nav>
+        </nav>
 
-        <motion.div 
-          className="mt-10 flex justify-center space-x-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
+        <div className="mt-10 flex justify-center space-x-10">
           {navigation.social.map((item) => (
-            <motion.a
+            <a
               key={item.name}
               href={item.href}
-              className="text-[#AAAAAA] hover:text-blue-500 transition-colors duration-300"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
+              className="text-gray-400 hover:text-gray-200"
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
-            </motion.a>
+            </a>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.p 
-          className="mt-10 text-center text-xs leading-5 text-[#AAAAAA]"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          &copy; {new Date().getFullYear()} FitTrackPro. All rights reserved.
-        </motion.p>
+        <p className="mt-10 text-center text-xs leading-5 text-gray-400">
+          &copy; 2024 FitTrack Pro. All rights reserved.
+        </p>
       </div>
     </footer>
   )
