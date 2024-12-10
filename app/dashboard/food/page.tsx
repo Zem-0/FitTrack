@@ -2,18 +2,14 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { 
-  Plus, 
   Utensils, 
   Brain,
-  Target,
   Clock,
   Apple,
   Scale,
-  ChevronRight
 } from 'lucide-react';
 
 interface FoodLog {
@@ -111,7 +107,7 @@ export default function FoodTrackingPage() {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 1, repeat: Infinity }}
-                className="mr-2"
+                style={{ marginRight: '0.5rem' }}
               >
                 <Brain className="h-5 w-5" />
               </motion.div>

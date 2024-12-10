@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Plus, Utensils, ArrowRight, Trash2, Edit2, ChevronLeft, ChevronRight } from "lucide-react";
+import { Plus, Utensils, Trash2, Edit2, ChevronLeft, ChevronRight } from "lucide-react";
 import { toast } from "sonner";
 import AddMealDialog from "@/components/AddMealDialog";
 import NutritionProgress from "@/components/NutritionProgress";
