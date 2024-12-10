@@ -315,202 +315,203 @@ export default function DashboardPage() {
         }}
         initial="hidden"
         animate="visible"
-        className="space-y-8"
       >
-        {/* First Row - Key Metrics */}
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
-          variants={containerVariants}
-        >
-          {/* Calories Card */}
-          <motion.div variants={itemVariants}>
-            <motion.div
-              whileHover="hover"
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Card className={cardStyle}>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-medium text-white">Calories</h3>
-                  <Flame className="h-5 w-5 text-orange-400" />
-                </div>
-                <div className="mt-4">
-                  <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
-                  <p className="text-sm text-gray-400">daily target</p>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-
-          {/* Protein Card */}
-          <motion.div variants={itemVariants}>
-            <motion.div
-              whileHover="hover"
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Card className={cardStyle}>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-medium text-white">Protein</h3>
-                  <Dumbbell className="h-5 w-5 text-blue-400" />
-                </div>
-                <div className="mt-4">
-                  <div className="text-3xl font-bold text-white">{nutritionData?.macros.protein}g</div>
-                  <p className="text-sm text-gray-400">daily target</p>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-
-          {/* Carbs Card */}
-          <motion.div variants={itemVariants}>
-            <motion.div
-              whileHover="hover"
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Card className={cardStyle}>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-medium text-white">Carbs</h3>
-                  <Croissant className="h-5 w-5 text-yellow-400" />
-                </div>
-                <div className="mt-4">
-                  <div className="text-3xl font-bold text-white">{nutritionData?.macros.carbs}g</div>
-                  <p className="text-sm text-gray-400">daily target</p>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-
-          {/* Fats Card */}
-          <motion.div variants={itemVariants}>
-            <motion.div
-              whileHover="hover"
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Card className={cardStyle}>
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-medium text-white">Fats</h3>
-                  <Droplets className="h-5 w-5 text-red-400" />
-                </div>
-                <div className="mt-4">
-                  <div className="text-3xl font-bold text-white">{nutritionData?.macros.fats}g</div>
-                  <p className="text-sm text-gray-400">daily target</p>
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Second Row - Charts */}
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-4"
-          variants={containerVariants}
-        >
-          {/* Macros Distribution */}
-          <motion.div variants={itemVariants}>
-            <motion.div
-              whileHover="hover"
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Card className={cardStyle}>
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-medium text-white">Macros Distribution</h3>
-                  <Cookie className="h-5 w-5 text-orange-400" />
-                </div>
-                <div className="h-[300px] flex items-center justify-center">
-                  <Doughnut data={chartData} options={chartOptions} />
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-
-          {/* Micronutrients */}
-          <motion.div variants={itemVariants}>
-            <motion.div
-              whileHover="hover"
-              variants={cardVariants}
-              className="h-full"
-            >
-              <Card className={cardStyle}>
-                <div className="flex items-center justify-between mb-6">
-                  <h3 className="text-lg font-medium text-white">Micronutrients</h3>
-                  <Target className="h-5 w-5 text-purple-400" />
-                </div>
-                <div className="h-[300px]">
-                  <Bar data={microChartData} options={microChartOptions} />
-                </div>
-              </Card>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-
-        {/* Third Row - Todo List */}
-        <motion.div variants={itemVariants}>
-          <Card className={cardStyle}>
-            <div className="flex items-center justify-between mb-6">
-              <h3 className="text-lg font-medium text-white">Daily Tasks</h3>
-              <Activity className="h-5 w-5 text-blue-400" />
-            </div>
-
-            <div className="flex gap-2 mb-6">
-              <Input
-                type="text"
-                placeholder="Add a new task..."
-                value={newTodo}
-                onChange={(e) => setNewTodo(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && addTodo()}
-                className="bg-white/5 border-white/10 text-white"
-              />
-              <Button
-                onClick={addTodo}
-                className="bg-blue-500 hover:bg-blue-600"
+        <div className="space-y-8">
+          {/* First Row - Key Metrics */}
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+            variants={containerVariants}
+          >
+            {/* Calories Card */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover="hover"
+                variants={cardVariants}
+                className="h-full"
               >
-                <Plus className="h-5 w-5" />
-              </Button>
-            </div>
+                <Card className={cardStyle}>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-medium text-white">Calories</h3>
+                    <Flame className="h-5 w-5 text-orange-400" />
+                  </div>
+                  <div className="mt-4">
+                    <div className="text-3xl font-bold text-white">{nutritionData?.calories}</div>
+                    <p className="text-sm text-gray-400">daily target</p>
+                  </div>
+                </Card>
+              </motion.div>
+            </motion.div>
 
-            <AnimatePresence mode='popLayout'>
-              {todos.map((todo) => (
-                <motion.div
-                  key={todo.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  className={`flex items-center gap-3 p-3 rounded-lg mb-2 ${
-                    todo.completed
-                      ? 'bg-green-500/10 line-through text-gray-400'
-                      : 'bg-white/5 text-gray-200'
-                  } ${todo.isNutritionTask ? 'border-l-2 border-blue-500' : ''}`}
+            {/* Protein Card */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover="hover"
+                variants={cardVariants}
+                className="h-full"
+              >
+                <Card className={cardStyle}>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-medium text-white">Protein</h3>
+                    <Dumbbell className="h-5 w-5 text-blue-400" />
+                  </div>
+                  <div className="mt-4">
+                    <div className="text-3xl font-bold text-white">{nutritionData?.macros.protein}g</div>
+                    <p className="text-sm text-gray-400">daily target</p>
+                  </div>
+                </Card>
+              </motion.div>
+            </motion.div>
+
+            {/* Carbs Card */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover="hover"
+                variants={cardVariants}
+                className="h-full"
+              >
+                <Card className={cardStyle}>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-medium text-white">Carbs</h3>
+                    <Croissant className="h-5 w-5 text-yellow-400" />
+                  </div>
+                  <div className="mt-4">
+                    <div className="text-3xl font-bold text-white">{nutritionData?.macros.carbs}g</div>
+                    <p className="text-sm text-gray-400">daily target</p>
+                  </div>
+                </Card>
+              </motion.div>
+            </motion.div>
+
+            {/* Fats Card */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover="hover"
+                variants={cardVariants}
+                className="h-full"
+              >
+                <Card className={cardStyle}>
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-medium text-white">Fats</h3>
+                    <Droplets className="h-5 w-5 text-red-400" />
+                  </div>
+                  <div className="mt-4">
+                    <div className="text-3xl font-bold text-white">{nutritionData?.macros.fats}g</div>
+                    <p className="text-sm text-gray-400">daily target</p>
+                  </div>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Second Row - Charts */}
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-4"
+            variants={containerVariants}
+          >
+            {/* Macros Distribution */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover="hover"
+                variants={cardVariants}
+                className="h-full"
+              >
+                <Card className={cardStyle}>
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-medium text-white">Macros Distribution</h3>
+                    <Cookie className="h-5 w-5 text-orange-400" />
+                  </div>
+                  <div className="h-[300px] flex items-center justify-center">
+                    <Doughnut data={chartData} options={chartOptions} />
+                  </div>
+                </Card>
+              </motion.div>
+            </motion.div>
+
+            {/* Micronutrients */}
+            <motion.div variants={itemVariants}>
+              <motion.div
+                whileHover="hover"
+                variants={cardVariants}
+                className="h-full"
+              >
+                <Card className={cardStyle}>
+                  <div className="flex items-center justify-between mb-6">
+                    <h3 className="text-lg font-medium text-white">Micronutrients</h3>
+                    <Target className="h-5 w-5 text-purple-400" />
+                  </div>
+                  <div className="h-[300px]">
+                    <Bar data={microChartData} options={microChartOptions} />
+                  </div>
+                </Card>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Third Row - Todo List */}
+          <motion.div variants={itemVariants}>
+            <Card className={cardStyle}>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="text-lg font-medium text-white">Daily Tasks</h3>
+                <Activity className="h-5 w-5 text-blue-400" />
+              </div>
+
+              <div className="flex gap-2 mb-6">
+                <Input
+                  type="text"
+                  placeholder="Add a new task..."
+                  value={newTodo}
+                  onChange={(e) => setNewTodo(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && addTodo()}
+                  className="bg-white/5 border-white/10 text-white"
+                />
+                <Button
+                  onClick={addTodo}
+                  className="bg-blue-500 hover:bg-blue-600"
                 >
-                  <button
-                    onClick={() => toggleTodo(todo.id)}
-                    className={`flex-shrink-0 w-5 h-5 rounded border ${
+                  <Plus className="h-5 w-5" />
+                </Button>
+              </div>
+
+              <AnimatePresence mode='popLayout'>
+                {todos.map((todo) => (
+                  <motion.div
+                    key={todo.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    className={`flex items-center gap-3 p-3 rounded-lg mb-2 ${
                       todo.completed
-                        ? 'bg-green-500 border-green-500'
-                        : 'border-gray-400'
-                    } flex items-center justify-center`}
+                        ? 'bg-green-500/10 line-through text-gray-400'
+                        : 'bg-white/5 text-gray-200'
+                    } ${todo.isNutritionTask ? 'border-l-2 border-blue-500' : ''}`}
                   >
-                    {todo.completed && <Check className="h-3 w-3 text-white" />}
-                  </button>
-
-                  <span className="flex-grow">{todo.text}</span>
-
-                  {!todo.isNutritionTask && (
                     <button
-                      onClick={() => deleteTodo(todo.id)}
-                      className="text-gray-400 hover:text-red-400"
+                      onClick={() => toggleTodo(todo.id)}
+                      className={`flex-shrink-0 w-5 h-5 rounded border ${
+                        todo.completed
+                          ? 'bg-green-500 border-green-500'
+                          : 'border-gray-400'
+                      } flex items-center justify-center`}
                     >
-                      <Trash2 className="h-4 w-4" />
+                      {todo.completed && <Check className="h-3 w-3 text-white" />}
                     </button>
-                  )}
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </Card>
-        </motion.div>
+
+                    <span className="flex-grow">{todo.text}</span>
+
+                    {!todo.isNutritionTask && (
+                      <button
+                        onClick={() => deleteTodo(todo.id)}
+                        className="text-gray-400 hover:text-red-400"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </button>
+                    )}
+                  </motion.div>
+                ))}
+              </AnimatePresence>
+            </Card>
+          </motion.div>
+        </div>
       </motion.div>
     </div>
   );
