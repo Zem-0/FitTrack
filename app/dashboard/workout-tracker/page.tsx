@@ -125,10 +125,10 @@ export default function WorkoutTrackerPage() {
     }
   };
 
-  // Calculate daily totals
+  // Calculate daily totals with proper type conversion
   const dailyTotals = workouts.reduce((totals, workout) => {
-    totals.calories += workout.calories || 0;
-    totals.duration += workout.duration || 0;
+    totals.calories += parseInt(workout.calories) || 0;
+    totals.duration += parseInt(workout.duration) || 0;
     return totals;
   }, { calories: 0, duration: 0 });
 
