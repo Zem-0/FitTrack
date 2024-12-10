@@ -306,7 +306,13 @@ export default function DashboardPage() {
   return (
     <div className="p-8 space-y-8">
       <motion.div
-        variants={containerVariants}
+        variants={{
+          hidden: { opacity: 0 },
+          visible: { 
+            opacity: 1,
+            transition: { staggerChildren: 0.1 }
+          }
+        }}
         initial="hidden"
         animate="visible"
         className="space-y-8"
