@@ -17,7 +17,7 @@ function MovingGradient() {
     <div className="absolute inset-0 overflow-hidden">
       <div 
         className={cn(
-          "absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600/50 to-blue-500 opacity-20 transition-all duration-1000",
+          "absolute inset-0 bg-gradient-to-r from-blue-500 via-blue-600/50 to-blue-500 opacity-20",
           mounted && "animate-gradient"
         )}
         style={{ backgroundSize: "200% 200%" }}
